@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly (
+            "org.slf4j:slf4j-api:${slf4jVersion}",
+            "org.projectlombok:lombok:${lombokVersion}",
+    )
+
+    implementation(
+            project(":loan-domain"),
+            project(":loan-generator"),
+            "com.amazonaws:aws-lambda-java-events:${awsLambdaJavaEventsVersion}",
+            "com.amazonaws:aws-lambda-java-core:${awsCoreVersion}",
+            "software.amazon.awssdk:s3:${awsS3Client}",
+            "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}",
+            "ch.qos.logback:logback-classic:${logbackVersion}",
+            "org.slf4j:slf4j-api:${slf4jVersion}",
+            "org.slf4j:slf4j-log4j12:${slf4jVersion}",
+    )
+}
+
+tasks.register('buildZip', Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from(configurations.runtimeClasspath)
+    }
+}
+
+build.dependsOn buildZip

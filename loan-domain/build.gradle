@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation(
+            "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}",
+            "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.0",
+            "ch.qos.logback:logback-classic:${logbackVersion}",
+            "org.slf4j:slf4j-api:${slf4jVersion}",
+            "org.slf4j:slf4j-log4j12:${slf4jVersion}",
+    )
+
+    compileOnly(
+            "org.projectlombok:lombok:${lombokVersion}",
+            "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}",
+
+    )
+
+    annotationProcessor (
+            "org.projectlombok:lombok:${lombokVersion}",
+            "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}",
+    )
+
+}
+

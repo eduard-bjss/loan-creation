@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(
+            project(":loan-domain"),
+            "net.datafaker:datafaker:${dataFaker}",
+    )
+
+    testImplementation(
+            "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}",
+            "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.0",
+
+    )
+
+}
+

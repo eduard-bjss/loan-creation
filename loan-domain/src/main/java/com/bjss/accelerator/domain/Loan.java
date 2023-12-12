@@ -12,7 +12,7 @@ public class Loan implements JsonSource{
     private LoanDetails details;
 
     @JsonProperty("credit")
-    Credit credit;
+    private Credit credit;
 
     public long getLoanId() {
         return borrower != null ? borrower.getLoanId() : -1;

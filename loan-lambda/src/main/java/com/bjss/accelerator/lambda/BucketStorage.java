@@ -1,4 +1,4 @@
-package lambda;
+package com.bjss.accelerator.lambda;
 
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
